@@ -1,0 +1,16 @@
+{
+  "name": "proxytester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "proxynova.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "nodemon": "^2.0.14"
+  }
+}
