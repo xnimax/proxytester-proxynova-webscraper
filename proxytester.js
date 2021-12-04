@@ -51,7 +51,9 @@ const proxyCaller = async (url, propxyIP, proxyPort) => {
       },
     });
     const p = cheerio.load(res.data);
-    return { ip: propxyIP, port: proxyPort, data: p("html").html() };
+    return {
+      workered: { ip: propxyIP, port: proxyPort },
+    };
   } catch (error) {
     return { data: { notWorked: { propxyIP, proxyPort } } };
   }
@@ -60,6 +62,7 @@ const proxyCaller = async (url, propxyIP, proxyPort) => {
 const myUrl = "https://downloadly.ir";
 const run = async () => {
   const ips = await getIPS();
+  console.log({ips})
   ips.forEach(async (item) => {
     const res = await proxyCaller(myUrl, item.ip, item.port);
     console.log(res);
