@@ -19,7 +19,8 @@ const getIPS = async () => {
       const sliced = toArr.slice(firstPrIdx + 2, lastPrIdx - 1);
       return sliced
         .filter((item) => {
-          if (item === "'" || item == "+" || item === " ") return false;
+          if (item === "'" || item == "+" || item === " " || item === '"')
+            return false;
           return true;
         })
         .join("");
@@ -27,6 +28,11 @@ const getIPS = async () => {
     return false;
   };
   const sanitizePort = (str) => {
+    if (str.includes("<a")) {
+      let getText = str.split(">")[1] // ->  2222 <a/>
+      getText = getText.split("<")[0]
+      return getText;
+    }
     return String(str).trim();
   };
   const res = await callUrl(url);
